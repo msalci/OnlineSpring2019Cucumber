@@ -7,7 +7,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        tags = {"@storemanager or @negative"},
+        plugin = {
+          "html:target/default-cucumber-reports"
+        },
+//        tags = {"@storemanager"},
+        tags = {"@negative"},
+        //tags = {"@driver"},
+//        tags = {"@VTY-4121"},
         features = {
             "src/test/resources/features" //to specify where are the features
         },
@@ -17,7 +23,7 @@ import org.junit.runner.RunWith;
         glue = {"com/vytrack/step_definitions"},
         //dry tun - to generate step definitions automatically
         //you will see them in the console output
-        dryRun = false
+        dryRun = true
 
 )
 public class CukesRunner {
