@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarEventsPage extends BasePage {
@@ -218,5 +219,10 @@ public class CalendarEventsPage extends BasePage {
 
     public String getEndTime() {
         return endTime.getAttribute("value");
+    }
+
+    public List<String> getTableHeaders() {
+        BrowserUtils.waitForStaleElement(createCalendarEventBtn);
+        return BrowserUtils.getElementsText(headers);
     }
 }
